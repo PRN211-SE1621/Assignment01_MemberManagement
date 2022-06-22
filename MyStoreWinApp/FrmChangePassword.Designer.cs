@@ -91,7 +91,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(173, 178);
+            this.btnReset.Location = new System.Drawing.Point(33, 178);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(94, 29);
             this.btnReset.TabIndex = 6;
