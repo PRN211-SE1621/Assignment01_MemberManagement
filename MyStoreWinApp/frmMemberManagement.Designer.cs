@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnCLose = new System.Windows.Forms.Button();
-            this.dgvCarList = new System.Windows.Forms.DataGridView();
+            this.dgvMemberList = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
@@ -45,13 +45,13 @@
             this.lbCarID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCountry = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboCountry = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.btnFilter = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMemberList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,17 +65,18 @@
             this.btnCLose.UseVisualStyleBackColor = true;
             this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
             // 
-            // dgvCarList
+            // dgvMemberList
             // 
-            this.dgvCarList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCarList.Location = new System.Drawing.Point(12, 280);
-            this.dgvCarList.Name = "dgvCarList";
-            this.dgvCarList.ReadOnly = true;
-            this.dgvCarList.RowHeadersWidth = 51;
-            this.dgvCarList.RowTemplate.Height = 29;
-            this.dgvCarList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCarList.Size = new System.Drawing.Size(776, 188);
-            this.dgvCarList.TabIndex = 28;
+            this.dgvMemberList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMemberList.Location = new System.Drawing.Point(12, 280);
+            this.dgvMemberList.Name = "dgvMemberList";
+            this.dgvMemberList.ReadOnly = true;
+            this.dgvMemberList.RowHeadersWidth = 51;
+            this.dgvMemberList.RowTemplate.Height = 29;
+            this.dgvMemberList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMemberList.Size = new System.Drawing.Size(776, 188);
+            this.dgvMemberList.TabIndex = 28;
+            this.dgvMemberList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMemberList_CellContentClick);
             // 
             // btnDelete
             // 
@@ -169,7 +170,6 @@
             this.lbManufacturer.Size = new System.Drawing.Size(34, 20);
             this.lbManufacturer.TabIndex = 17;
             this.lbManufacturer.Text = "City";
-            this.lbManufacturer.Click += new System.EventHandler(this.lbManufacturer_Click);
             // 
             // lbCarName
             // 
@@ -197,7 +197,6 @@
             this.label1.Size = new System.Drawing.Size(60, 20);
             this.label1.TabIndex = 30;
             this.label1.Text = "Country";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtCountry
             // 
@@ -206,13 +205,14 @@
             this.txtCountry.Size = new System.Drawing.Size(212, 27);
             this.txtCountry.TabIndex = 31;
             // 
-            // comboBox1
+            // cboCountry
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(109, 226);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(209, 28);
-            this.comboBox1.TabIndex = 32;
+            this.cboCountry.FormattingEnabled = true;
+            this.cboCountry.Location = new System.Drawing.Point(109, 226);
+            this.cboCountry.Name = "cboCountry";
+            this.cboCountry.Size = new System.Drawing.Size(209, 28);
+            this.cboCountry.TabIndex = 32;
+            this.cboCountry.SelectedIndexChanged += new System.EventHandler(this.cboCountry_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -221,7 +221,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(229, 28);
             this.comboBox2.TabIndex = 33;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -248,12 +247,13 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(634, 225);
+            this.btnFilter.Location = new System.Drawing.Point(620, 226);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(94, 29);
             this.btnFilter.TabIndex = 36;
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // frmMemberManagement
             // 
@@ -264,11 +264,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboCountry);
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCLose);
-            this.Controls.Add(this.dgvCarList);
+            this.Controls.Add(this.dgvMemberList);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnLoad);
@@ -285,7 +285,7 @@
             this.Name = "frmMemberManagement";
             this.Text = "frmMemberManagement";
             this.Load += new System.EventHandler(this.frmMemberManagement_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCarList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMemberList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -295,7 +295,7 @@
         #endregion
 
         private Button btnCLose;
-        private DataGridView dgvCarList;
+        private DataGridView dgvMemberList;
         private Button btnDelete;
         private Button btnNew;
         private Button btnLoad;
@@ -311,7 +311,7 @@
         private Label lbCarID;
         private Label label1;
         private TextBox txtCountry;
-        private ComboBox comboBox1;
+        private ComboBox cboCountry;
         private ComboBox comboBox2;
         private Label label2;
         private Label label3;
