@@ -29,9 +29,14 @@ x86/
 bld/
 DataAccess/[Bb]in/
 DataAccess/[Oo]bj/
-*/[Oo]bj/
+MyStoreWinApp/[Bb]in/
+MyStoreWinApp/[Oo]bj/
+BussinessObject/[Bb]in/
+BussinessObject/[Oo]bj/
 /[Bb]in/
 /[Oo]bj/
+*/[Bb]in/
+*/[Oo]bj/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
