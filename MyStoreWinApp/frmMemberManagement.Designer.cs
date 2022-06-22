@@ -28,12 +28,294 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnCLose = new System.Windows.Forms.Button();
+            this.dgvCarList = new System.Windows.Forms.DataGridView();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.txtMemberName = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtMemberId = new System.Windows.Forms.TextBox();
+            this.lbReleaseYear = new System.Windows.Forms.Label();
+            this.lbPrice = new System.Windows.Forms.Label();
+            this.lbManufacturer = new System.Windows.Forms.Label();
+            this.lbCarName = new System.Windows.Forms.Label();
+            this.lbCarID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.btnFilter = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // btnCLose
+            // 
+            this.btnCLose.Location = new System.Drawing.Point(358, 474);
+            this.btnCLose.Name = "btnCLose";
+            this.btnCLose.Size = new System.Drawing.Size(94, 29);
+            this.btnCLose.TabIndex = 29;
+            this.btnCLose.Text = "Close";
+            this.btnCLose.UseVisualStyleBackColor = true;
+            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
+            // 
+            // dgvCarList
+            // 
+            this.dgvCarList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarList.Location = new System.Drawing.Point(12, 280);
+            this.dgvCarList.Name = "dgvCarList";
+            this.dgvCarList.ReadOnly = true;
+            this.dgvCarList.RowHeadersWidth = 51;
+            this.dgvCarList.RowTemplate.Height = 29;
+            this.dgvCarList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarList.Size = new System.Drawing.Size(776, 188);
+            this.dgvCarList.TabIndex = 28;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(569, 173);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(94, 29);
+            this.btnDelete.TabIndex = 27;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(358, 173);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(94, 29);
+            this.btnNew.TabIndex = 26;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(158, 173);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(94, 29);
+            this.btnLoad.TabIndex = 25;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // txtMemberName
+            // 
+            this.txtMemberName.Location = new System.Drawing.Point(158, 69);
+            this.txtMemberName.Name = "txtMemberName";
+            this.txtMemberName.Size = new System.Drawing.Size(209, 27);
+            this.txtMemberName.TabIndex = 24;
+            // 
+            // txtCity
+            // 
+            this.txtCity.Location = new System.Drawing.Point(485, 116);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(229, 27);
+            this.txtCity.TabIndex = 23;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(485, 20);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(229, 27);
+            this.txtEmail.TabIndex = 22;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(485, 69);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.ReadOnly = true;
+            this.txtPassword.Size = new System.Drawing.Size(229, 27);
+            this.txtPassword.TabIndex = 21;
+            // 
+            // txtMemberId
+            // 
+            this.txtMemberId.Location = new System.Drawing.Point(158, 20);
+            this.txtMemberId.Name = "txtMemberId";
+            this.txtMemberId.Size = new System.Drawing.Size(209, 27);
+            this.txtMemberId.TabIndex = 20;
+            // 
+            // lbReleaseYear
+            // 
+            this.lbReleaseYear.AutoSize = true;
+            this.lbReleaseYear.Location = new System.Drawing.Point(390, 69);
+            this.lbReleaseYear.Name = "lbReleaseYear";
+            this.lbReleaseYear.Size = new System.Drawing.Size(70, 20);
+            this.lbReleaseYear.TabIndex = 19;
+            this.lbReleaseYear.Text = "Password";
+            // 
+            // lbPrice
+            // 
+            this.lbPrice.AutoSize = true;
+            this.lbPrice.Location = new System.Drawing.Point(390, 23);
+            this.lbPrice.Name = "lbPrice";
+            this.lbPrice.Size = new System.Drawing.Size(46, 20);
+            this.lbPrice.TabIndex = 18;
+            this.lbPrice.Text = "Email";
+            // 
+            // lbManufacturer
+            // 
+            this.lbManufacturer.AutoSize = true;
+            this.lbManufacturer.Location = new System.Drawing.Point(390, 119);
+            this.lbManufacturer.Name = "lbManufacturer";
+            this.lbManufacturer.Size = new System.Drawing.Size(34, 20);
+            this.lbManufacturer.TabIndex = 17;
+            this.lbManufacturer.Text = "City";
+            this.lbManufacturer.Click += new System.EventHandler(this.lbManufacturer_Click);
+            // 
+            // lbCarName
+            // 
+            this.lbCarName.AutoSize = true;
+            this.lbCarName.Location = new System.Drawing.Point(43, 69);
+            this.lbCarName.Name = "lbCarName";
+            this.lbCarName.Size = new System.Drawing.Size(109, 20);
+            this.lbCarName.TabIndex = 16;
+            this.lbCarName.Text = "Member Name";
+            // 
+            // lbCarID
+            // 
+            this.lbCarID.AutoSize = true;
+            this.lbCarID.Location = new System.Drawing.Point(43, 23);
+            this.lbCarID.Name = "lbCarID";
+            this.lbCarID.Size = new System.Drawing.Size(84, 20);
+            this.lbCarID.TabIndex = 15;
+            this.lbCarID.Text = "Member ID";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(43, 119);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Country";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // txtCountry
+            // 
+            this.txtCountry.Location = new System.Drawing.Point(155, 116);
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.Size = new System.Drawing.Size(212, 27);
+            this.txtCountry.TabIndex = 31;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(109, 226);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(209, 28);
+            this.comboBox1.TabIndex = 32;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(373, 226);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(229, 28);
+            this.comboBox2.TabIndex = 33;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(333, 229);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 20);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "City";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(43, 229);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 20);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Country";
+            // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(634, 225);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(94, 29);
+            this.btnFilter.TabIndex = 36;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            // 
+            // frmMemberManagement
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 511);
+            this.Controls.Add(this.btnFilter);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.txtCountry);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCLose);
+            this.Controls.Add(this.dgvCarList);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnNew);
+            this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.txtMemberName);
+            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtMemberId);
+            this.Controls.Add(this.lbReleaseYear);
+            this.Controls.Add(this.lbPrice);
+            this.Controls.Add(this.lbManufacturer);
+            this.Controls.Add(this.lbCarName);
+            this.Controls.Add(this.lbCarID);
+            this.Name = "frmMemberManagement";
             this.Text = "frmMemberManagement";
+            this.Load += new System.EventHandler(this.frmMemberManagement_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private Button btnCLose;
+        private DataGridView dgvCarList;
+        private Button btnDelete;
+        private Button btnNew;
+        private Button btnLoad;
+        private TextBox txtMemberName;
+        private TextBox txtCity;
+        private TextBox txtEmail;
+        private TextBox txtPassword;
+        private TextBox txtMemberId;
+        private Label lbReleaseYear;
+        private Label lbPrice;
+        private Label lbManufacturer;
+        private Label lbCarName;
+        private Label lbCarID;
+        private Label label1;
+        private TextBox txtCountry;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
+        private Label label2;
+        private Label label3;
+        private FileSystemWatcher fileSystemWatcher1;
+        private Button btnFilter;
     }
 }
