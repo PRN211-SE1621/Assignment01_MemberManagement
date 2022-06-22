@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BussinessObject
 {
-    public class MemberObject
+    public class MemberObject : IComparable<MemberObject>
     {
         public int MemberID { get; set; }
         public string MemberName { get; set; }
@@ -17,5 +17,9 @@ namespace BussinessObject
 
         public string Role { get; set; }
 
+        public int CompareTo(MemberObject? other)
+        {
+            return MemberID.CompareTo(other.MemberID);
+        }
     }
 }
