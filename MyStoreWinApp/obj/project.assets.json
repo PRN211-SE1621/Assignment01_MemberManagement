@@ -8,19 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\FPT\\CN5\\PRN211\\Assignment1\\Assignment01_MemberManagement\\MyStoreWinApp\\MyStoreWinApp.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\PRN211\\ASSIGNMENT\\ASSIGNMENT1\\MyStoreWinApp\\MyStoreWinApp.csproj",
       "projectName": "MyStoreWinApp",
-      "projectPath": "G:\\FPT\\CN5\\PRN211\\Assignment1\\Assignment01_MemberManagement\\MyStoreWinApp\\MyStoreWinApp.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "G:\\FPT\\CN5\\PRN211\\Assignment1\\Assignment01_MemberManagement\\MyStoreWinApp\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\PRN211\\ASSIGNMENT\\ASSIGNMENT1\\MyStoreWinApp\\MyStoreWinApp.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\PRN211\\ASSIGNMENT\\ASSIGNMENT1\\MyStoreWinApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
