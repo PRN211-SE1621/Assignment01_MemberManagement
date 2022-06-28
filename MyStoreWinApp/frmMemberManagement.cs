@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BussinessObject;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,17 @@ namespace MyStoreWinApp
 {
     public partial class frmMemberManagement : Form
     {
+        private FrmLogin loginForm;
+        private MemberObject member;
         public frmMemberManagement()
         {
             InitializeComponent();
+        }
+        public frmMemberManagement(FrmLogin loginForm, MemberObject member)
+        {
+            InitializeComponent();
+            this.loginForm = loginForm;
+            this.member = member;
         }
 
         private void frmMemberManagement_Load(object sender, EventArgs e)
@@ -55,6 +64,11 @@ namespace MyStoreWinApp
         private void dgvMemberList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void frmMemberManagement_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(loginForm != null) loginForm.Close();
         }
     }
 }
