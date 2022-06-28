@@ -3,7 +3,7 @@ using DataAccess.Context;
 
 namespace DataAccess.Repository
 {
-    public class MemberRepository : IMememberRepository
+    public class MemberRepository : IMemberRepository
     {
         public bool ChangePassword(string id, string oldPassword, string newPassword)
         {
@@ -99,7 +99,7 @@ namespace DataAccess.Repository
             {
                 if (searchId == null || searchId.Equals(""))
                 {
-                    resultList.AddRange(SearchMemberByName(searchName);
+                    resultList.AddRange(SearchMemberByName(searchName));
                 }
                 else
                 {
