@@ -284,6 +284,7 @@
             this.Controls.Add(this.lbCarID);
             this.Name = "frmMemberManagement";
             this.Text = "frmMemberManagement";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMemberManagement_FormClosed);
             this.Load += new System.EventHandler(this.frmMemberManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMemberList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
