@@ -1,12 +1,7 @@
 ﻿using AutomobileLibrary.DataAccess;
 using BussinessObject;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Context
 {
@@ -121,7 +116,7 @@ namespace DataAccess.Context
                 }
                 else
                 {
-                    throw new Exception("The car is already exist.");
+                    throw new Exception("Member is already exist.");
                 }
 
             }
@@ -150,7 +145,7 @@ namespace DataAccess.Context
                 }
                 else
                 {
-                    throw new Exception("The car does not already exist.");
+                    throw new Exception("Member does not already exist.");
                 }
 
             }
@@ -171,7 +166,7 @@ namespace DataAccess.Context
                 }
                 else
                 {
-                    throw new Exception("The car does not already exist.");
+                    throw new Exception("Member does not already exist.");
                 }
 
             }
