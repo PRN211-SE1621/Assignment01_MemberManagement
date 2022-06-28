@@ -2701,11 +2701,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\PRN211\\ASSIGNMENT\\ASSIGNMENT1\\BussinessObject\\BussinessObject.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\Assignment01_MemberManagement\\BussinessObject\\BussinessObject.csproj",
       "projectName": "BussinessObject",
-      "projectPath": "C:\\Users\\User\\Desktop\\PRN211\\ASSIGNMENT\\ASSIGNMENT1\\BussinessObject\\BussinessObject.csproj",
+      "projectPath": "C:\\Users\\User\\Source\\Repos\\Assignment01_MemberManagement\\BussinessObject\\BussinessObject.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\PRN211\\ASSIGNMENT\\ASSIGNMENT1\\BussinessObject\\obj\\",
+      "outputPath": "C:\\Users\\User\\Source\\Repos\\Assignment01_MemberManagement\\BussinessObject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

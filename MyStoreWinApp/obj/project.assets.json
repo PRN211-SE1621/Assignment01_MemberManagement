@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\PRN211\\ASSIGNMENT\\ASSIGNMENT1\\MyStoreWinApp\\MyStoreWinApp.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\Assignment01_MemberManagement\\MyStoreWinApp\\MyStoreWinApp.csproj",
       "projectName": "MyStoreWinApp",
-      "projectPath": "C:\\Users\\User\\Desktop\\PRN211\\ASSIGNMENT\\ASSIGNMENT1\\MyStoreWinApp\\MyStoreWinApp.csproj",
+      "projectPath": "C:\\Users\\User\\Source\\Repos\\Assignment01_MemberManagement\\MyStoreWinApp\\MyStoreWinApp.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\PRN211\\ASSIGNMENT\\ASSIGNMENT1\\MyStoreWinApp\\obj\\",
+      "outputPath": "C:\\Users\\User\\Source\\Repos\\Assignment01_MemberManagement\\MyStoreWinApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
