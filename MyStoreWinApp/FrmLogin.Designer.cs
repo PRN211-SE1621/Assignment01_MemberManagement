@@ -43,7 +43,6 @@
             this.gmail.Size = new System.Drawing.Size(48, 20);
             this.gmail.TabIndex = 0;
             this.gmail.Text = "Gmail";
-            this.gmail.Click += new System.EventHandler(this.label1_Click);
             // 
             // password
             // 
@@ -60,7 +59,6 @@
             this.txtGmail.Name = "txtGmail";
             this.txtGmail.Size = new System.Drawing.Size(308, 27);
             this.txtGmail.TabIndex = 2;
-            this.txtGmail.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtPassword
             // 
@@ -91,7 +89,6 @@
             this.Controls.Add(this.gmail);
             this.Name = "FrmLogin";
             this.Text = "FrmLogin";
-            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

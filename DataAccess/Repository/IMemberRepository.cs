@@ -2,7 +2,7 @@
 
 namespace DataAccess.Repository
 {
-    public interface IMememberRepository
+    public interface IMemberRepository
     {
         public bool CreateMember(MemberObject newMember);
 

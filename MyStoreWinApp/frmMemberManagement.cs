@@ -12,9 +12,15 @@ namespace MyStoreWinApp
 {
     public partial class frmMemberManagement : Form
     {
+        private FrmLogin loginForm;
         public frmMemberManagement()
         {
             InitializeComponent();
+        }
+        public frmMemberManagement(FrmLogin loginForm)
+        {
+            InitializeComponent();
+            this.loginForm = loginForm;
         }
 
         private void frmMemberManagement_Load(object sender, EventArgs e)
@@ -55,6 +61,11 @@ namespace MyStoreWinApp
         private void dgvMemberList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void frmMemberManagement_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(loginForm != null) loginForm.Close();
         }
     }
 }
