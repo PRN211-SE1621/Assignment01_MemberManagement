@@ -116,7 +116,7 @@ namespace DataAccess.Context
                 }
                 else
                 {
-                    throw new Exception("The car is already exist.");
+                    throw new Exception("Member is already exist.");
                 }
 
             }
@@ -145,7 +145,7 @@ namespace DataAccess.Context
                 }
                 else
                 {
-                    throw new Exception("The car does not already exist.");
+                    throw new Exception("Member does not already exist.");
                 }
 
             }
@@ -166,7 +166,7 @@ namespace DataAccess.Context
                 }
                 else
                 {
-                    throw new Exception("The car does not already exist.");
+                    throw new Exception("Member does not already exist.");
                 }
 
             }
