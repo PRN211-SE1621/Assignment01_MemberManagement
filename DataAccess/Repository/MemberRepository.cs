@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BussinessObject;
+﻿using BussinessObject;
+using DataAccess.Context;
 
 namespace DataAccess.Repository
 {
@@ -29,10 +25,7 @@ namespace DataAccess.Repository
             throw new NotImplementedException();
         }
 
-        public List<MemberObject> GetAllMembers()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<MemberObject> GetAllMembers() => MemberDBContext.Instance.GetMemberList();
 
         public List<MemberObject> GetMemberByCity(string city)
         {
@@ -51,22 +44,88 @@ namespace DataAccess.Repository
 
         public MemberObject GetMemberById(string id)
         {
-            throw new NotImplementedException();
+            MemberObject member = null;
+            try
+            {
+                int intId = int.Parse(id);
+                member = MemberDBContext.Instance.GetMemberByID(intId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return member;
         }
 
         public List<MemberObject> SearchMemberById(string id)
         {
-            throw new NotImplementedException();
+            List<MemberObject> resultList = new List<MemberObject>();
+            try
+            {
+
+                if (GetMemberById(id) != null)
+                    resultList.Add(GetMemberById(id));
+                int intId = int.Parse(id);
+                foreach (MemberObject member in MemberDBContext.Instance.GetMemberList())
+                {
+                    if (member.MemberID.ToString().Contains(id) && !member.MemberID.ToString().Equals(id))
+                    {
+                        resultList.Add(member);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return resultList;
         }
 
         public List<MemberObject> SearchMemberByIdAndName(string searchName, string searchId)
         {
-            throw new NotImplementedException();
+            List<MemberObject> resultList = new List<MemberObject>();
+            if (searchName == null || searchName.Equals(""))
+            {
+                if (searchId == null || searchId.Equals(""))
+                {
+                    resultList.AddRange(GetAllMembers());
+                }
+                else
+                {
+                    resultList.AddRange(SearchMemberById(searchId));
+                }
+            }
+            else
+            {
+                if (searchId == null || searchId.Equals(""))
+                {
+                    resultList.AddRange(SearchMemberByName(searchName);
+                }
+                else
+                {
+                    foreach (MemberObject member in SearchMemberById(searchId))
+                    {
+                        if (member.MemberID.ToString().Contains(searchId))
+                        {
+                            resultList.Add(member);
+                        }
+                    }
+                }
+            }
+            return resultList;
         }
 
         public List<MemberObject> SearchMemberByName(string name)
         {
-            throw new NotImplementedException();
+            List<MemberObject> resultList = new List<MemberObject>();
+            foreach (MemberObject member in MemberDBContext.Instance.GetMemberList())
+            {
+                if (member.MemberName.Contains(name))
+                {
+                    resultList.Add(member);
+                }
+            }
+            return resultList;
         }
 
         public bool UpdateMember(string id, MemberObject updatedMemberInfo)

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BussinessObject;
+﻿using BussinessObject;
 
 namespace DataAccess.Repository
 {
@@ -17,7 +12,7 @@ namespace DataAccess.Repository
 
         public MemberObject GetMemberById(string id);
 
-        public List<MemberObject> GetAllMembers();
+        public IEnumerable<MemberObject> GetAllMembers();
 
         public List<MemberObject> SearchMemberByName(string name);
 
