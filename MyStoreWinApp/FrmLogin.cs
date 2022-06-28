@@ -25,7 +25,7 @@ namespace MyStoreWinApp
                 MessageBox.Show("Incorrect user name or password");
             } else if(member.Role.Equals(ADMIN_ROLE))
             {
-                frmMemberManagement frmMemberManagement = new frmMemberManagement(this);
+                frmMemberManagement frmMemberManagement = new frmMemberManagement(this, member);
                 this.Hide();
                 frmMemberManagement.ShowDialog();
             } else if(member.Role.Equals(USER_ROLE))

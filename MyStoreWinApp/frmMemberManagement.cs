@@ -70,10 +70,5 @@ namespace MyStoreWinApp
         {
             if(loginForm != null) loginForm.Close();
         }
-
-        private void frmMemberManagement_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if(loginForm != null) loginForm.Close();
-        }
     }
 }
