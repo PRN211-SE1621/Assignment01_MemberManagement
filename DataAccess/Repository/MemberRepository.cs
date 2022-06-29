@@ -17,29 +17,95 @@ namespace DataAccess.Repository
 
         public bool CreateMember(MemberObject newMember)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MemberDBContext.Instance.AddNew(newMember);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
 
         public bool DeleteMember(string id)
         {
-            throw new NotImplementedException();
+            MemberObject member = null;
+            try
+            {
+                int intId = int.Parse(id);
+                member = MemberDBContext.Instance.GetMemberByID(intId);
+                MemberDBContext.Instance.Remove(member);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
 
         public IEnumerable<MemberObject> GetAllMembers() => MemberDBContext.Instance.GetMemberList();
 
         public List<MemberObject> GetMemberByCity(string city)
         {
-            throw new NotImplementedException();
+            List<MemberObject> resultList = new List<MemberObject>();
+            foreach (MemberObject member in MemberDBContext.Instance.GetMemberList())
+            {
+                if (member.City.Contains(city))
+                {
+                    resultList.Add(member);
+                }
+            }
+            return resultList;
         }
 
         public List<MemberObject> GetMemberByCityAndCountry(string city, string country)
         {
-            throw new NotImplementedException();
+            List<MemberObject> resultList = new List<MemberObject>();
+            if(country == null || country.Equals(""))
+            {
+                if(city == null || city.Equals(""))
+                {
+                    resultList.AddRange(GetAllMembers());
+                }
+                else
+                {
+                    resultList.AddRange(GetMemberByCity(city));
+                }
+            }
+            else
+            {
+                if (city == null || city.Equals(""))
+                {
+                    resultList.AddRange(GetMemberByCountry(country));
+                }
+                else
+                {
+                    foreach(MemberObject member in GetMemberByCountry(country))
+                    {
+                        if (member.City.Contains(city))
+                        {
+                            resultList.Add(member);
+                        }
+                    }
+                }
+            }
+            return resultList;
         }
 
         public List<MemberObject> GetMemberByCountry(string country)
         {
-            throw new NotImplementedException();
+            List<MemberObject> resultList = new List<MemberObject>();
+            foreach (MemberObject member in MemberDBContext.Instance.GetMemberList())
+                {
+                    if (member.Country.Contains(country))
+                    {
+                        resultList.Add(member);
+                    }
+                }
+            return resultList;
         }
 
         public MemberObject GetMemberById(string id)
@@ -128,9 +194,18 @@ namespace DataAccess.Repository
             return resultList;
         }
 
-        public bool UpdateMember(string id, MemberObject updatedMemberInfo)
+        public bool UpdateMember(MemberObject updatedMemberInfo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MemberDBContext.Instance.Update(updatedMemberInfo);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
     }
 }

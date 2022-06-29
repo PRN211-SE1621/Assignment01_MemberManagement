@@ -8,7 +8,7 @@ namespace DataAccess.Repository
 
         public bool DeleteMember(string id);
 
-        public bool UpdateMember(string id, MemberObject updatedMemberInfo);
+        public bool UpdateMember(MemberObject updatedMemberInfo);
 
         public MemberObject GetMemberById(string id);
 
