@@ -173,5 +173,33 @@ namespace DataAccess.Context
             catch (Exception ex) { throw new Exception(ex.Message); }
             finally { CloseConnection(); }
         }
+
+        public bool CheckLogin(string email, string password)
+        {
+            IDataReader dataReader = null;
+            string SQLCheckLogin = "Select email " +
+                "where email = @Email and password = @Password";
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(dataProvider.CreateParameter("@Email", 100, email, DbType.String));
+                parameters.Add(dataProvider.CreateParameter("@Password", 100, password, DbType.String));
+                dataProvider.Insert(SQLCheckLogin, CommandType.Text, parameters.ToArray());
+                if (dataReader.Read())
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                dataReader.Close();
+                CloseConnection();
+            }
+            return false;
+        }
     }
 }
