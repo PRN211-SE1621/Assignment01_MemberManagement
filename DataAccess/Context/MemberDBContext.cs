@@ -10,7 +10,7 @@ namespace DataAccess.Context
         private static MemberDBContext instance = null;
         private static readonly object instanceLock = new object();
 
-        public MemberDBContext()
+        public MemberDBContext() : base()
         {
         }
         public static MemberDBContext Instance
@@ -42,7 +42,7 @@ namespace DataAccess.Context
                         MemberID = dataReader.GetInt32(0),
                         MemberName = dataReader.GetString(1),
                         Email = dataReader.GetString(2),
-                        Password = dataReader.GetString(3),
+                        Password = "******",//dataReader.GetString(3),
                         City = dataReader.GetString(4),
                         Country = dataReader.GetString(5),
                         Role = dataReader.GetString(6)
@@ -174,20 +174,30 @@ namespace DataAccess.Context
             finally { CloseConnection(); }
         }
 
-        public bool CheckLogin(string email, string password)
+        public MemberObject GetUserByEmailAndPassword(string email, string password)
         {
             IDataReader dataReader = null;
-            string SQLCheckLogin = "Select email " +
+            string SQLCheckLogin = "SELECT member_id, member_name, email, password, city, country, role FROM members " +
                 "where email = @Email and password = @Password";
             try
             {
                 var parameters = new List<SqlParameter>();
                 parameters.Add(dataProvider.CreateParameter("@Email", 100, email, DbType.String));
                 parameters.Add(dataProvider.CreateParameter("@Password", 100, password, DbType.String));
-                dataProvider.Insert(SQLCheckLogin, CommandType.Text, parameters.ToArray());
+                dataReader = dataProvider.GetDataReader(SQLCheckLogin, CommandType.Text, out connection, parameters.ToArray());
                 if (dataReader.Read())
                 {
-                    return true;
+                    var member = new MemberObject()
+                    {
+                        MemberID = dataReader.GetInt32(0),
+                        MemberName = dataReader.GetString(1),
+                        Email = dataReader.GetString(2),
+                        Password = dataReader.GetString(3),
+                        City = dataReader.GetString(4),
+                        Country = dataReader.GetString(5),
+                        Role = dataReader.GetString(6)
+                    };
+                    return member;
                 }
             }
             catch (Exception ex)
@@ -199,7 +209,15 @@ namespace DataAccess.Context
                 dataReader.Close();
                 CloseConnection();
             }
-            return false;
+            return null;
+        }
+        public List<string> getAllCountries()
+        {
+            return new List<string>();
+        }
+        public List<string> getCitiesByCountry(string country)
+        {
+            return new List<string>();
         }
     }
 }

@@ -11,9 +11,7 @@ namespace DataAccess.Repository
         }
 
         public MemberObject CheckLogin(string email, string password)
-        {
-            throw new NotImplementedException();
-        }
+            => MemberDBContext.Instance.GetUserByEmailAndPassword(email, password);
 
         public bool CreateMember(MemberObject newMember)
         {
@@ -207,5 +205,8 @@ namespace DataAccess.Repository
                 return false;
             }
         }
+
+        public List<string> GetAllCountries() => MemberDBContext.Instance.getAllCountries();
+        public List<string> GetCitiesByCountry(string country) => MemberDBContext.Instance.getCitiesByCountry(country);
     }
 }
