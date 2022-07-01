@@ -34,16 +34,8 @@ namespace MyStoreWinApp
             MemberObject mem = null;
             try
             {
-                mem = new MemberObject
-                {
-                    MemberID = int.Parse(txtMemberId.Text),
-                    MemberName = txtMemberName.Text,
-                    City = txtCity.Text,
-                    Country = txtCountry.Text,
-                    Email = txtEmail.Text,
-                    Password = txtPassword.Text,
-                    Role = ""
-                };
+                memberRepo = new MemberRepository();
+                mem = memberRepo.GetMemberById(txtMemberId.Text);
             }
             catch (Exception ex)
             {
@@ -70,8 +62,7 @@ namespace MyStoreWinApp
                 Text = "Add Member",
                 InsertOrUpdate = false,
                 MemberRepository = memberRepo,
-                admin = this.member,
-                MemberInfo = GetMemberObject()
+                admin = this.member
             };
             if (memberDetails.ShowDialog() == DialogResult.OK)
             {

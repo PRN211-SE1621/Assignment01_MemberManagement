@@ -38,8 +38,8 @@ namespace MyStoreWinApp
                     City = txtCity.Text,
                     Country = txtCountry.Text,
                     Email = txtEmail.Text,
-                    Password = txtPassword.Text,
-                    Role = "user"
+                    Password = MemberInfo == null ?  txtPassword.Text: MemberInfo.Password,
+                    Role = MemberInfo == null ? "user" : MemberInfo.Role
                 };
                 if (InsertOrUpdate)
                 {
@@ -66,16 +66,19 @@ namespace MyStoreWinApp
                 txtMemberId.Enabled = !InsertOrUpdate;
                 txtPassword.Enabled = !InsertOrUpdate;
                 txtEmail.Enabled = !InsertOrUpdate;
+                btnChangePassword.Enabled = InsertOrUpdate;
                 if (InsertOrUpdate == true)
                 {
                     txtMemberId.Text = MemberInfo.MemberID.ToString();
                     txtEmail.Text = MemberInfo.Email.ToString();
                     txtMemberName.Text = MemberInfo.MemberName.ToString();
                     txtCountry.Text = MemberInfo.Country.ToString();
-                    txtPassword.Text = MemberInfo.Password.ToString();
+                    txtPassword.Text = "******";
                     txtCity.Text = MemberInfo.City.ToString();
                 }
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)=>Close();
     }
 }
