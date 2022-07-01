@@ -45,12 +45,12 @@
             this.lbCarID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCountry = new System.Windows.Forms.TextBox();
-            this.cboCountry = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.btnFilter = new System.Windows.Forms.Button();
+            this.txtCountryFilter = new System.Windows.Forms.TextBox();
+            this.txtCityFilter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMemberList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
@@ -206,23 +206,6 @@
             this.txtCountry.Size = new System.Drawing.Size(368, 27);
             this.txtCountry.TabIndex = 31;
             // 
-            // cboCountry
-            // 
-            this.cboCountry.FormattingEnabled = true;
-            this.cboCountry.Location = new System.Drawing.Point(319, 259);
-            this.cboCountry.Name = "cboCountry";
-            this.cboCountry.Size = new System.Drawing.Size(209, 28);
-            this.cboCountry.TabIndex = 32;
-            this.cboCountry.SelectedIndexChanged += new System.EventHandler(this.cboCountry_SelectedIndexChanged);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(583, 259);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(229, 28);
-            this.comboBox2.TabIndex = 33;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -256,16 +239,30 @@
             this.btnFilter.UseVisualStyleBackColor = true;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
+            // txtCountryFilter
+            // 
+            this.txtCountryFilter.Location = new System.Drawing.Point(319, 259);
+            this.txtCountryFilter.Name = "txtCountryFilter";
+            this.txtCountryFilter.Size = new System.Drawing.Size(197, 27);
+            this.txtCountryFilter.TabIndex = 37;
+            // 
+            // txtCityFilter
+            // 
+            this.txtCityFilter.Location = new System.Drawing.Point(604, 259);
+            this.txtCityFilter.Name = "txtCityFilter";
+            this.txtCityFilter.Size = new System.Drawing.Size(197, 27);
+            this.txtCityFilter.TabIndex = 38;
+            // 
             // frmMemberManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1255, 637);
+            this.Controls.Add(this.txtCityFilter);
+            this.Controls.Add(this.txtCountryFilter);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.cboCountry);
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCLose);
@@ -313,11 +310,11 @@
         private Label lbCarID;
         private Label label1;
         private TextBox txtCountry;
-        private ComboBox cboCountry;
-        private ComboBox comboBox2;
         private Label label2;
         private Label label3;
         private FileSystemWatcher fileSystemWatcher1;
         private Button btnFilter;
+        private TextBox txtCityFilter;
+        private TextBox txtCountryFilter;
     }
 }

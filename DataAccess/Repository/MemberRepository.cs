@@ -206,7 +206,9 @@ namespace DataAccess.Repository
             }
         }
 
-        public List<string> GetAllCountries() => MemberDBContext.Instance.getAllCountries();
-        public List<string> GetCitiesByCountry(string country) => MemberDBContext.Instance.getCitiesByCountry(country);
+        public IEnumerable<MemberObject> GetMembersFilterByCountryAndCity(string country, string city)
+        {
+            return MemberDBContext.Instance.getAllMembersFilterByCountryAndCity(country, city);
+        }
     }
 }

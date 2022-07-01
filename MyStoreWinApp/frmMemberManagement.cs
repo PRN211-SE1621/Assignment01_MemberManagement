@@ -47,11 +47,10 @@ namespace MyStoreWinApp
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            LoadMembers();
+            LoadMembersToGridView(memberRepo.GetAllMembers());
         }
-        private void LoadMembers()
+        private void LoadMembersToGridView(IEnumerable<MemberObject> members)
         {
-            var members = memberRepo.GetAllMembers();
             try
             {
                 bindingSource = new BindingSource();
@@ -111,7 +110,10 @@ namespace MyStoreWinApp
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-
+            string country = txtCountryFilter.Text;
+            string city = txtCityFilter.Text;
+            IEnumerable<MemberObject> members = memberRepo.GetMembersFilterByCountryAndCity(country, city);
+            LoadMembersToGridView(members);
         }
 
         private void dgvMemberList_CellContentClick(object sender, DataGridViewCellEventArgs e)
