@@ -28,6 +28,6 @@ namespace DataAccess.Repository
 
         public List<MemberObject> SearchMemberByIdAndName(string searchName, string searchId);
 
-        public List<MemberObject> GetMemberByCityAndCountry(string city, string country);
+        public IEnumerable<MemberObject> GetMembersFilterByCountryAndCity(string country, string city);
     }
 }

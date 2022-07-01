@@ -211,13 +211,40 @@ namespace DataAccess.Context
             }
             return null;
         }
-        public List<string> getAllCountries()
+        public List<MemberObject> getAllMembersFilterByCountryAndCity(string country, string city)
         {
-            return new List<string>();
-        }
-        public List<string> getCitiesByCountry(string country)
-        {
-            return new List<string>();
+            IDataReader dataReader = null;
+            string SQLSelect = "Select member_id, member_name, email, password, city, country, role from Members where country like @Country and city like @City";
+            var members = new List<MemberObject>();
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(dataProvider.CreateParameter("@Country", 100, "%"+country+"%", DbType.String));
+                parameters.Add(dataProvider.CreateParameter("@City", 100, "%"+city+"%", DbType.String));
+                dataReader = dataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection, parameters.ToArray());
+                while (dataReader.Read())
+                {
+                    members.Add(new MemberObject()
+                    {
+                        MemberID = dataReader.GetInt32(0),
+                        MemberName = dataReader.GetString(1),
+                        Email = dataReader.GetString(2),
+                        Password = "******",//dataReader.GetString(3),
+                        City = dataReader.GetString(4),
+                        Country = dataReader.GetString(5),
+                        Role = dataReader.GetString(6)
+                    }); ;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return members;
         }
     }
 }
