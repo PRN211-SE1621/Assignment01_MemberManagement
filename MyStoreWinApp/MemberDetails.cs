@@ -1,16 +1,5 @@
 ﻿using BussinessObject;
 using DataAccess.Repository;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BussinessObject;
-using DataAccess.Repository;
 
 namespace MyStoreWinApp
 {
@@ -20,9 +9,16 @@ namespace MyStoreWinApp
         {
             InitializeComponent();
         }
+        public MemberDetails(Form parentForm)
+        {
+            InitializeComponent();
+            this.parentForm = parentForm;
+        }
         public IMemberRepository MemberRepository { get; set; }
         public bool InsertOrUpdate { get; set; }
         public MemberObject MemberInfo { get; set; }
+        public bool IsAdmin { get; set; }
+        private Form parentForm;
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -41,7 +37,6 @@ namespace MyStoreWinApp
                         Country = txtCountry.Text,
                         Email = txtEmail.Text,
                         Password = MemberInfo == null ? txtPassword.Text : MemberInfo.Password,
-                        Role = MemberInfo == null ? "USER" : MemberInfo.Role
                     };
                     if (InsertOrUpdate)
                     {
@@ -57,7 +52,14 @@ namespace MyStoreWinApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add a new member" : "Update a member");
+                if(ex.Message.Contains("input"))
+                {
+                    MessageBox.Show("The id must be a number", InsertOrUpdate == false ? "Add a new member" : "Update a member");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add a new member" : "Update a member");
+                }
             }
         }
 
@@ -70,8 +72,7 @@ namespace MyStoreWinApp
                 Email = txtEmail.Text,
                 Country = txtCountry.Text,
                 City = txtCity.Text,
-                Password = txtPassword.Text,
-                Role = "USER"
+                Password = txtPassword.Text
             };
             FrmChangePassword changePassword = new FrmChangePassword(this, member);
             this.Hide();
@@ -94,6 +95,24 @@ namespace MyStoreWinApp
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)=>Close();
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            if(!IsAdmin)
+            {
+                this.parentForm.Close();
+            }    
+        }
+
+        private void MemberDetails_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(!IsAdmin)
+            {
+                if(parentForm != null)
+                {
+                    parentForm.Close();
+                }    
+            }
+        }
     }
 }

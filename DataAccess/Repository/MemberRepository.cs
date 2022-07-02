@@ -150,31 +150,31 @@ namespace DataAccess.Repository
             return resultList;
         }
 
-        public List<MemberObject> SearchMemberByIdAndName(string searchName, string searchId)
+        public IEnumerable<MemberObject> SearchMemberByIdAndName(string id, string name)
         {
             List<MemberObject> resultList = new List<MemberObject>();
-            if (searchName == null || searchName.Equals(""))
+            if (name == null || name.Equals(""))
             {
-                if (searchId == null || searchId.Equals(""))
+                if (id == null || id.Equals(""))
                 {
                     resultList.AddRange(GetAllMembers());
                 }
                 else
                 {
-                    resultList.AddRange(SearchMemberById(searchId));
+                    resultList.AddRange(SearchMemberById(id));
                 }
             }
             else
             {
-                if (searchId == null || searchId.Equals(""))
+                if (id == null || id.Equals(""))
                 {
-                    resultList.AddRange(SearchMemberByName(searchName));
+                    resultList.AddRange(SearchMemberByName(name));
                 }
                 else
                 {
-                    foreach (MemberObject member in SearchMemberById(searchId))
+                    foreach (MemberObject member in SearchMemberById(id))
                     {
-                        if (member.MemberID.ToString().Contains(searchId))
+                        if (member.MemberID.ToString().Contains(id))
                         {
                             resultList.Add(member);
                         }
@@ -184,7 +184,7 @@ namespace DataAccess.Repository
             return resultList;
         }
 
-        public List<MemberObject> SearchMemberByName(string name)
+        public IEnumerable<MemberObject> SearchMemberByName(string name)
         {
             List<MemberObject> resultList = new List<MemberObject>();
             foreach (MemberObject member in MemberDBContext.Instance.GetMemberList())
@@ -213,6 +213,11 @@ namespace DataAccess.Repository
         public IEnumerable<MemberObject> GetMembersFilterByCountryAndCity(string country, string city)
         {
             return MemberDBContext.Instance.getAllMembersFilterByCountryAndCity(country, city);
+        }
+
+        public IEnumerable<MemberObject> SortByMemberName(IEnumerable<MemberObject> members)
+        {
+            return members.OrderBy(member => member.MemberName);
         }
     }
 }

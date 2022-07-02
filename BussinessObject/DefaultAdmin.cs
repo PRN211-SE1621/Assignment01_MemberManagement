@@ -23,7 +23,6 @@ namespace BussinessObject
             this.MemberID = 0;
             this.MemberName = DEFAULT_INFO;
             this.Country = DEFAULT_INFO;
-            this.Role = Roles.ADMIN;
         }
     }
 }
