@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BussinessObject;
+using DataAccess.Repository;
 
 namespace MyStoreWinApp
 {
@@ -48,8 +50,25 @@ namespace MyStoreWinApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add new:" : "Insert");
+                MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add a new member" : "Update a member");
             }
+        }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            var member = new MemberObject
+            {
+                MemberID = int.Parse(txtMemberId.Text),
+                MemberName = txtMemberName.Text,
+                Email = txtEmail.Text,
+                Country = txtCountry.Text,
+                City = txtCity.Text,
+                Password = txtPassword.Text,
+                Role = "USER"
+            };
+            FrmChangePassword changePassword = new FrmChangePassword(this, member);
+            this.Hide();
+            changePassword.ShowDialog();
         }
         private void MemberDetails_Load(object sender, EventArgs e)
         {

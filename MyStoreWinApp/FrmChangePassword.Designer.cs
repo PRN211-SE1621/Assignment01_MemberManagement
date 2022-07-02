@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.lbPassword = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbNewPassword = new System.Windows.Forms.Label();
+            this.lbConfirmPassword = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -41,87 +41,93 @@
             // lbPassword
             // 
             this.lbPassword.AutoSize = true;
-            this.lbPassword.Location = new System.Drawing.Point(33, 35);
+            this.lbPassword.Location = new System.Drawing.Point(29, 26);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(98, 20);
+            this.lbPassword.Size = new System.Drawing.Size(79, 15);
             this.lbPassword.TabIndex = 0;
             this.lbPassword.Text = "Old Password";
             this.lbPassword.Click += new System.EventHandler(this.lbPassword_Click);
             // 
-            // label2
+            // lbNewPassword
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "New Password";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.lbNewPassword.AutoSize = true;
+            this.lbNewPassword.Location = new System.Drawing.Point(29, 57);
+            this.lbNewPassword.Name = "lbNewPassword";
+            this.lbNewPassword.Size = new System.Drawing.Size(84, 15);
+            this.lbNewPassword.TabIndex = 1;
+            this.lbNewPassword.Text = "New Password";
+            this.lbNewPassword.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label3
+            // lbConfirmPassword
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 121);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Confirm Password";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.lbConfirmPassword.AutoSize = true;
+            this.lbConfirmPassword.Location = new System.Drawing.Point(29, 91);
+            this.lbConfirmPassword.Name = "lbConfirmPassword";
+            this.lbConfirmPassword.Size = new System.Drawing.Size(104, 15);
+            this.lbConfirmPassword.TabIndex = 2;
+            this.lbConfirmPassword.Text = "Confirm Password";
+            this.lbConfirmPassword.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(195, 35);
+            this.textBox1.Location = new System.Drawing.Point(171, 26);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(195, 27);
+            this.textBox1.Size = new System.Drawing.Size(171, 23);
             this.textBox1.TabIndex = 3;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(195, 121);
+            this.textBox2.Location = new System.Drawing.Point(171, 91);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(195, 27);
+            this.textBox2.Size = new System.Drawing.Size(171, 23);
             this.textBox2.TabIndex = 4;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(195, 76);
+            this.textBox3.Location = new System.Drawing.Point(171, 57);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(195, 27);
+            this.textBox3.Size = new System.Drawing.Size(171, 23);
             this.textBox3.TabIndex = 5;
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(173, 178);
+            this.btnReset.Location = new System.Drawing.Point(151, 134);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(94, 29);
+            this.btnReset.Size = new System.Drawing.Size(82, 22);
             this.btnReset.TabIndex = 6;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(296, 178);
+            this.btnUpdate.Location = new System.Drawing.Point(259, 134);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(94, 29);
+            this.btnUpdate.Size = new System.Drawing.Size(82, 22);
             this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             // 
             // FrmChangePassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 234);
+            this.ClientSize = new System.Drawing.Size(372, 176);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbConfirmPassword);
+            this.Controls.Add(this.lbNewPassword);
             this.Controls.Add(this.lbPassword);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmChangePassword";
-            this.Text = "FrmChangePassword";
+            this.Text = "Change Password";
             this.Load += new System.EventHandler(this.FrmChangePassword_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -131,8 +137,8 @@
         #endregion
 
         private Label lbPassword;
-        private Label label2;
-        private Label label3;
+        private Label lbNewPassword;
+        private Label lbConfirmPassword;
         private TextBox textBox1;
         private TextBox textBox2;
         private TextBox textBox3;

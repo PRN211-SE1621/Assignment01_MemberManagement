@@ -180,6 +180,7 @@
             this.btnChangePassword.TabIndex = 46;
             this.btnChangePassword.Text = "Change Password";
             this.btnChangePassword.UseVisualStyleBackColor = true;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // MemberDetails
             // 
@@ -204,7 +205,7 @@
             this.Controls.Add(this.lbCarID);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MemberDetails";
-            this.Text = "MemberDetails";
+            this.Text = "Member Details";
             this.Load += new System.EventHandler(this.MemberDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
