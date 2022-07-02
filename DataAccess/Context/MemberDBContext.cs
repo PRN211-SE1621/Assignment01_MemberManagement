@@ -42,7 +42,7 @@ namespace DataAccess.Context
                         MemberID = dataReader.GetInt32(0),
                         MemberName = dataReader.GetString(1),
                         Email = dataReader.GetString(2),
-                        Password = "******",//dataReader.GetString(3),
+                        Password = dataReader.GetString(3),
                         City = dataReader.GetString(4),
                         Country = dataReader.GetString(5),
                         Role = dataReader.GetString(6)

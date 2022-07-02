@@ -46,14 +46,6 @@ namespace MyStoreWinApp
 
         private void frmMemberManagement_Load(object sender, EventArgs e)
         {
-            if(member.Role.Equals(Roles.USER))
-            {
-                btnLoad.Enabled = false;
-                btnNew.Enabled = false;
-                btnSearch.Enabled = false;
-                btnFilter.Enabled = false;
-                btnSort.Enabled = false;
-            }
             btnDelete.Enabled = false;
         }
 
