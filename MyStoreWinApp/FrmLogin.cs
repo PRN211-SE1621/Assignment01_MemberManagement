@@ -6,7 +6,7 @@ namespace MyStoreWinApp
     public partial class FrmLogin : Form
     {
         IMemberRepository memberRepo = new MemberRepository();
-        const string ADMIN_ROLE = "admin";
+        const string ADMIN_ROLE = "ADMIN";
         const string USER_ROLE = "user";
         public FrmLogin()
         {
