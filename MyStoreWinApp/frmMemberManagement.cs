@@ -14,19 +14,17 @@ namespace MyStoreWinApp
 {
     public partial class frmMemberManagement : Form
     {
-        private FrmLogin loginForm;
-        private MemberObject member;
+        private Form parentForm;
         private IMemberRepository memberRepo;
         private BindingSource bindingSource;
         public frmMemberManagement()
         {
             InitializeComponent();
         }
-        public frmMemberManagement(FrmLogin loginForm, MemberObject member)
+        public frmMemberManagement(Form parentForm)
         {
             InitializeComponent();
-            this.loginForm = loginForm;
-            this.member = member;
+            this.parentForm = parentForm;
             memberRepo = new MemberRepository();
         }
         private MemberObject GetMemberObject()
@@ -60,7 +58,8 @@ namespace MyStoreWinApp
             {
                 Text = "Add Member",
                 InsertOrUpdate = false,
-                MemberRepository = memberRepo
+                MemberRepository = memberRepo,
+                IsAdmin = true
             };
             memberDetails.Show();
             LoadMembersToGridView(memberRepo.GetAllMembers());
@@ -96,6 +95,7 @@ namespace MyStoreWinApp
 
                 dgvMemberList.DataSource = null;
                 dgvMemberList.DataSource = bindingSource;
+                dgvMemberList.Columns["Password"].Visible = false;
                 if (members.Count() == 0)
                 {
                     ClearText();
@@ -143,7 +143,8 @@ namespace MyStoreWinApp
                 Text = "Update Member",
                 InsertOrUpdate = true,
                 MemberRepository = memberRepo,
-                MemberInfo = GetMemberObject()
+                MemberInfo = GetMemberObject(),
+                IsAdmin = true
             };
             if(memberDetails.ShowDialog() == DialogResult.OK)
             {
@@ -154,7 +155,7 @@ namespace MyStoreWinApp
 
         private void frmMemberManagement_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(loginForm != null) loginForm.Close();
+            if(parentForm != null) parentForm.Close();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

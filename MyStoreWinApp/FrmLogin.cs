@@ -22,9 +22,9 @@ namespace MyStoreWinApp
 
             if(defaultAdmin != null)
             {
-                frmMemberManagement frmMemberManagement = new frmMemberManagement(this, defaultAdmin);
+                frmMemberManagement frmMemberManagement = new frmMemberManagement(this);
                 this.Hide();
-                frmMemberManagement.ShowDialog();
+                frmMemberManagement.Show();
             }
             else
             {
@@ -34,23 +34,18 @@ namespace MyStoreWinApp
                 {
                     MessageBox.Show("Incorrect user name or password");
                 }
-                else if(member.Role.Equals(Roles.ADMIN))
+                else
                 {
-                    frmMemberManagement frmMemberManagement = new frmMemberManagement(this, member);
-                    this.Hide();
-                    frmMemberManagement.ShowDialog();
-                }
-                else if(member.Role.Equals(Roles.USER))
-                {
-                    MemberDetails memberDetails = new MemberDetails()
+                    MemberDetails memberDetails = new MemberDetails(this)
                     {
                         MemberInfo = member,
                         MemberRepository = memberRepo,
                         InsertOrUpdate = true,
+                        IsAdmin = false
                     };
                     this.Hide();
-                    memberDetails.ShowDialog();
-                }    
+                    memberDetails.Show();
+                }
             }
         }
         private MemberObject IsDefaultAdmin(string email, string password)
