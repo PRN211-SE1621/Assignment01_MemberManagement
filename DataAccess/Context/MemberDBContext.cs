@@ -141,7 +141,7 @@ namespace DataAccess.Context
                     parameters.Add(dataProvider.CreateParameter("@City", 500, member.City, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@Country", 500, member.Country, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@Role", 100, member.Role, DbType.String));
-                    dataProvider.Insert(SQLUpdate, CommandType.Text, parameters.ToArray());
+                    dataProvider.Update(SQLUpdate, CommandType.Text, parameters.ToArray());
                 }
                 else
                 {
