@@ -67,7 +67,11 @@
             // 
             // btnCLose
             // 
+
+
+
             this.btnCLose.Location = new System.Drawing.Point(485, 528);
+
             this.btnCLose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCLose.Name = "btnCLose";
             this.btnCLose.Size = new System.Drawing.Size(82, 22);
@@ -80,7 +84,9 @@
             // 
             this.dgvMemberList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMemberList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
             this.dgvMemberList.Location = new System.Drawing.Point(12, 297);
+
             this.dgvMemberList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvMemberList.Name = "dgvMemberList";
             this.dgvMemberList.ReadOnly = true;
@@ -221,10 +227,12 @@
             // 
             // txtCountry
             // 
+
             this.txtCountry.Location = new System.Drawing.Point(176, 85);
             this.txtCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(319, 23);
+
             this.txtCountry.TabIndex = 31;
             // 
             // fileSystemWatcher1
@@ -235,7 +243,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+
             this.label2.Location = new System.Drawing.Point(6, 67);
+
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 15);
             this.label2.TabIndex = 34;
@@ -254,10 +264,12 @@
             // 
             // txtCountryFilter
             // 
+
             this.txtCountryFilter.Location = new System.Drawing.Point(100, 31);
             this.txtCountryFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCountryFilter.Name = "txtCountryFilter";
             this.txtCountryFilter.Size = new System.Drawing.Size(206, 23);
+
             this.txtCountryFilter.TabIndex = 37;
             // 
             // label3
@@ -271,10 +283,12 @@
             // 
             // txtCityFilter
             // 
+
             this.txtCityFilter.Location = new System.Drawing.Point(100, 67);
             this.txtCityFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCityFilter.Name = "txtCityFilter";
             this.txtCityFilter.Size = new System.Drawing.Size(206, 23);
+
             this.txtCityFilter.TabIndex = 38;
             // 
             // groupBoxFilter
@@ -364,10 +378,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+
             this.ClientSize = new System.Drawing.Size(1098, 561);
             this.Controls.Add(this.btnSort);
             this.Controls.Add(this.groupBoxFilter);
             this.Controls.Add(this.groupBoxSearch);
+
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCLose);

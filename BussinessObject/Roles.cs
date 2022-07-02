@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BussinessObject
 {
-    internal class MemberBLL
+    public static class Roles
     {
+        public const string ADMIN = "ADMIN";
+        public const string USER = "USER";
     }
 }

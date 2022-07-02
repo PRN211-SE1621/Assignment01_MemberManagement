@@ -29,10 +29,32 @@ namespace MyStoreWinApp
             this.member = member;
             memberRepo = new MemberRepository();
         }
+        private MemberObject GetMemberObject()
+        {
+            MemberObject mem = null;
+            try
+            {
+                memberRepo = new MemberRepository();
+                mem = memberRepo.GetMemberById(txtMemberId.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Get Member");
+            }
+            return mem;
+        }
 
         private void frmMemberManagement_Load(object sender, EventArgs e)
         {
-
+            if(member.Role.Equals(Roles.USER))
+            {
+                btnLoad.Enabled = false;
+                btnNew.Enabled = false;
+                btnSearch.Enabled = false;
+                btnFilter.Enabled = false;
+                btnSort.Enabled = false;
+            }
+            btnDelete.Enabled = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -44,9 +66,9 @@ namespace MyStoreWinApp
         {
             MemberDetails memberDetails = new MemberDetails
             {
-                Text = "Add member",
+                Text = "Add Member",
                 InsertOrUpdate = false,
-                MemberRepository = memberRepo,
+                MemberRepository = memberRepo
             };
             if (memberDetails.ShowDialog() == DialogResult.OK)
             {
@@ -58,6 +80,8 @@ namespace MyStoreWinApp
         private void btnLoad_Click(object sender, EventArgs e)
         {
             LoadMembersToGridView(memberRepo.GetAllMembers());
+            txtCountryFilter.Text = "";
+            txtCityFilter.Text = "";
         }
         private void LoadMembersToGridView(IEnumerable<MemberObject> members)
         {
@@ -135,11 +159,6 @@ namespace MyStoreWinApp
             this.Close();
         }
 
-        private void cboCountry_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnFilter_Click(object sender, EventArgs e)
         {
             string country = txtCountryFilter.Text;
@@ -152,10 +171,10 @@ namespace MyStoreWinApp
         {
             MemberDetails memberDetails = new MemberDetails
             {
-                Text = "Update member",
+                Text = "Update Member",
                 InsertOrUpdate = true,
                 MemberRepository = memberRepo,
-                Member = GetMemberObject()
+                MemberInfo = GetMemberObject()
             };
             if (memberDetails.ShowDialog() == DialogResult.OK)
             {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BussinessObject;
+using DataAccess.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,13 +20,9 @@ namespace MyStoreWinApp
         {
             InitializeComponent();
         }
-
         public IMemberRepository MemberRepository { get; set; }
         public bool InsertOrUpdate { get; set; }
-        public MemberObject Member { get; set; }
-
-        private void btnCancel_Click(object sender, EventArgs e) => Close();
-
+        public MemberObject MemberInfo { get; set; }
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -33,22 +31,21 @@ namespace MyStoreWinApp
                 {
                     MemberID = int.Parse(txtMemberId.Text),
                     MemberName = txtMemberName.Text,
-                    Email = txtEmail.Text,
-                    Country = txtCountry.Text,
                     City = txtCity.Text,
-                    Password = txtPassword.Text,
-                    Role = "USER"
+                    Country = txtCountry.Text,
+                    Email = txtEmail.Text,
+                    Password = MemberInfo == null ?  txtPassword.Text: MemberInfo.Password,
+                    Role = MemberInfo == null ? "USER" : MemberInfo.Role
                 };
-                if (InsertOrUpdate == false)
+                if (InsertOrUpdate)
                 {
-                    btnChangePassword.Hide();
-                    MemberRepository.CreateMember(member);
-                    MessageBox.Show("Add successfully!");
+                    MemberRepository.UpdateMember(member);
+                    MessageBox.Show("Update successfully.");
                 }
                 else
                 {
-                    MemberRepository.UpdateMember(member);
-                    MessageBox.Show("Update successfully!");
+                    MemberRepository.CreateMember(member);
+                    MessageBox.Show("Add successfully.");
                 }
             }
             catch (Exception ex)
@@ -73,24 +70,23 @@ namespace MyStoreWinApp
             this.Hide();
             changePassword.ShowDialog();
         }
-
         private void MemberDetails_Load(object sender, EventArgs e)
         {
             txtMemberId.Enabled = !InsertOrUpdate;
             txtPassword.Enabled = !InsertOrUpdate;
+            txtEmail.Enabled = !InsertOrUpdate;
+            btnChangePassword.Enabled = InsertOrUpdate;
             if (InsertOrUpdate == true)
             {
-                txtMemberId.Text = Member.MemberID.ToString();
-                txtMemberName.Text = Member.MemberName;
-                txtEmail.Text = Member.Email;
-                txtCountry.Text = Member.Country;
-                txtCity.Text = Member.City;
-                txtPassword.Text = Member.Password;
-            }
-            else
-            {
-                btnChangePassword.Hide();
+                txtMemberId.Text = MemberInfo.MemberID.ToString();
+                txtEmail.Text = MemberInfo.Email.ToString();
+                txtMemberName.Text = MemberInfo.MemberName.ToString();
+                txtCountry.Text = MemberInfo.Country.ToString();
+                txtPassword.Text = "******";
+                txtCity.Text = MemberInfo.City.ToString();
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)=>Close();
     }
 }
