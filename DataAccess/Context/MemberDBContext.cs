@@ -238,6 +238,36 @@ namespace DataAccess.Context
             }
             return members;
         }
+        
+        public void ChangePassword(int id, string oldPassword, string newPassword, string confirmPassword)
+        {
+            try
+            {
+                MemberObject c = GetMemberByID(id);
+                if (c != null && c.Password.Equals(oldPassword) && newPassword.Equals(confirmPassword))
+                {
+                    string SQLUpdate = "Update Members set password = @Password where member_id = @MemberID";
+                    var parameters = new List<SqlParameter>();
+                    parameters.Add(dataProvider.CreateParameter("@MemberID", 4, id, DbType.Int32));
+                    parameters.Add(dataProvider.CreateParameter("@Password", 500, newPassword, DbType.String));
+                    dataProvider.Update(SQLUpdate, CommandType.Text, parameters.ToArray());
+                }
+                else if (c != null && !c.Password.Equals(oldPassword))
+                {
+                    throw new Exception("Wrong password!");
+                }else if (c!= null && !newPassword.Equals(confirmPassword))
+                {
+                    throw new Exception("Password does not match");
+                }
+                else
+                {
+                    throw new Exception("Member does not already exist.");
+                }
+
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+            finally { CloseConnection(); }
+        }
 
         public MemberObject GetMemberByEmail(string email)
         {
@@ -272,6 +302,6 @@ namespace DataAccess.Context
                 CloseConnection();
             }
             return member;
-        }    
+        }
     }
 }

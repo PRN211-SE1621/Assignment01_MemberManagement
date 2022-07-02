@@ -151,6 +151,7 @@ namespace MyStoreWinApp
                 LoadMembersToGridView(memberRepo.GetAllMembers());
                 bindingSource.Position = bindingSource.Count - 1;
             }
+            LoadMembersToGridView(memberRepo.GetAllMembers());
         }
 
         private void frmMemberManagement_FormClosed(object sender, FormClosedEventArgs e)
