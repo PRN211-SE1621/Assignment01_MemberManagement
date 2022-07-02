@@ -387,7 +387,7 @@
             this.Controls.Add(this.lbCarID);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMemberManagement";
-            this.Text = "frmMemberManagement";
+            this.Text = "Member Management";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMemberManagement_FormClosed);
             this.Load += new System.EventHandler(this.frmMemberManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMemberList)).EndInit();

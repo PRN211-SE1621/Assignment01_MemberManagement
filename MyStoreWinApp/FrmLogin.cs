@@ -7,7 +7,7 @@ namespace MyStoreWinApp
     {
         IMemberRepository memberRepo = new MemberRepository();
         const string ADMIN_ROLE = "ADMIN";
-        const string USER_ROLE = "user";
+        const string USER_ROLE = "USER";
         public FrmLogin()
         {
             InitializeComponent();
