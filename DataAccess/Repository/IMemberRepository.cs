@@ -24,7 +24,7 @@ namespace DataAccess.Repository
 
         public MemberObject CheckLogin(string email, string password);
 
-        public bool ChangePassword(string id, string oldPassword, string newPassword);
+        public void ChangePassword(int id, string oldPassword, string newPassword, string confirmPassword);
 
         public List<MemberObject> SearchMemberByIdAndName(string searchName, string searchId);
 

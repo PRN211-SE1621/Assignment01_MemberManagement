@@ -31,19 +31,29 @@ namespace MyStoreWinApp
             memberRepo = new MemberRepository();
         }
 
-        private void lbPassword_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                memberRepo.ChangePassword(member.MemberID, txtOldPassword.Text, txtNewPassword.Text, txtConfirmPassword.Text);
+                DialogResult result = MessageBox.Show("Update password success");
+                if (result == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
+            txtConfirmPassword.Text = "";
+            txtNewPassword.Text = "";
+            txtOldPassword.Text = "";
         }
     }
 }

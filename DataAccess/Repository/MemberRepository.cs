@@ -5,9 +5,15 @@ namespace DataAccess.Repository
 {
     public class MemberRepository : IMemberRepository
     {
-        public bool ChangePassword(string id, string oldPassword, string newPassword)
+        public void ChangePassword(int id, string oldPassword, string newPassword, string confirmPassword)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MemberDBContext.Instance.ChangePassword(id, oldPassword, newPassword, confirmPassword);
+            }catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public MemberObject CheckLogin(string email, string password)
