@@ -27,25 +27,32 @@ namespace MyStoreWinApp
         {
             try
             {
-                var member = new MemberObject
+                if(txtEmail.Text.Equals("") || txtPassword.Text.Equals(""))
                 {
-                    MemberID = int.Parse(txtMemberId.Text),
-                    MemberName = txtMemberName.Text,
-                    City = txtCity.Text,
-                    Country = txtCountry.Text,
-                    Email = txtEmail.Text,
-                    Password = MemberInfo == null ?  txtPassword.Text: MemberInfo.Password,
-                    Role = MemberInfo == null ? "USER" : MemberInfo.Role
-                };
-                if (InsertOrUpdate)
-                {
-                    MemberRepository.UpdateMember(member);
-                    MessageBox.Show("Update successfully.");
+                    MessageBox.Show("Email or Password is empty");
                 }
                 else
                 {
-                    MemberRepository.CreateMember(member);
-                    MessageBox.Show("Add successfully.");
+                    var member = new MemberObject
+                    {
+                        MemberID = int.Parse(txtMemberId.Text),
+                        MemberName = txtMemberName.Text,
+                        City = txtCity.Text,
+                        Country = txtCountry.Text,
+                        Email = txtEmail.Text,
+                        Password = MemberInfo == null ? txtPassword.Text : MemberInfo.Password,
+                        Role = MemberInfo == null ? "USER" : MemberInfo.Role
+                    };
+                    if (InsertOrUpdate)
+                    {
+                        MemberRepository.UpdateMember(member);
+                        MessageBox.Show("Update successfully.");
+                    }
+                    else
+                    {
+                        MemberRepository.CreateMember(member);
+                        MessageBox.Show("Add successfully.");
+                    }
                 }
             }
             catch (Exception ex)

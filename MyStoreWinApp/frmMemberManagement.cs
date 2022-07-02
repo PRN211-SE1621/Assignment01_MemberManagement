@@ -62,11 +62,9 @@ namespace MyStoreWinApp
                 InsertOrUpdate = false,
                 MemberRepository = memberRepo
             };
-            if (memberDetails.ShowDialog() == DialogResult.OK)
-            {
-                LoadMembersToGridView(memberRepo.GetAllMembers());
-                bindingSource.Position = bindingSource.Count - 1;
-            }
+            memberDetails.Show();
+            LoadMembersToGridView(memberRepo.GetAllMembers());
+            bindingSource.Position = bindingSource.Count - 1;
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -113,27 +111,6 @@ namespace MyStoreWinApp
                 MessageBox.Show(ex.Message);
             }
         }
-        private MemberObject GetMemberObject()
-        {
-            MemberObject member = null;
-            try
-            {
-                member = new MemberObject
-                {
-                    MemberID = int.Parse(txtMemberId.Text),
-                    MemberName = txtMemberName.Text,
-                    Email = txtEmail.Text,
-                    Country = txtCountry.Text,
-                    Password = txtPassword.Text,
-                    City = txtCity.Text
-                };
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Get Member");
-            }
-            return member;
-        }
 
 
         private void ClearText()
@@ -168,7 +145,7 @@ namespace MyStoreWinApp
                 MemberRepository = memberRepo,
                 MemberInfo = GetMemberObject()
             };
-            if (memberDetails.ShowDialog() == DialogResult.OK)
+            if(memberDetails.ShowDialog() == DialogResult.OK)
             {
                 LoadMembersToGridView(memberRepo.GetAllMembers());
                 bindingSource.Position = bindingSource.Count - 1;

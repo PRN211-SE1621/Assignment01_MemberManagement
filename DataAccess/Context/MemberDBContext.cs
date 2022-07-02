@@ -132,12 +132,11 @@ namespace DataAccess.Context
                 if (c != null)
                 {
                     string SQLUpdate = "Update Members set member_name = @MemberName, email = @Email, " +
-                        " password = @Password, city = @City, country = @Country where member_id = @MemberID";
+                        " city = @City, country = @Country where member_id = @MemberID";
                     var parameters = new List<SqlParameter>();
                     parameters.Add(dataProvider.CreateParameter("@MemberID", 4, member.MemberID, DbType.Int32));
                     parameters.Add(dataProvider.CreateParameter("@MemberName", 500, member.MemberName, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@Email", 100, member.Email, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@Password", 100, member.Password, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@City", 500, member.City, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@Country", 500, member.Country, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@Role", 100, member.Role, DbType.String));

@@ -22,8 +22,7 @@ namespace DataAccess.Repository
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -201,8 +200,7 @@ namespace DataAccess.Repository
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
         }
 
