@@ -21,16 +21,10 @@ namespace MyStoreWinApp
         public IMemberRepository MemberRepository { get; set; }
         public bool InsertOrUpdate { get; set; }
         public MemberObject MemberInfo { get; set; }
-        public MemberObject admin { get; set; }
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             try
             {
-                if (!admin.Role.Equals("ADMIN"))
-                {
-                    throw new Exception("Action is not accepted!");
-                }
                 var member = new MemberObject
                 {
                     MemberID = int.Parse(txtMemberId.Text),
@@ -39,15 +33,17 @@ namespace MyStoreWinApp
                     Country = txtCountry.Text,
                     Email = txtEmail.Text,
                     Password = MemberInfo == null ?  txtPassword.Text: MemberInfo.Password,
-                    Role = MemberInfo == null ? "user" : MemberInfo.Role
+                    Role = MemberInfo == null ? "USER" : MemberInfo.Role
                 };
                 if (InsertOrUpdate)
                 {
                     MemberRepository.UpdateMember(member);
+                    MessageBox.Show("Update successfully.");
                 }
                 else
                 {
                     MemberRepository.CreateMember(member);
+                    MessageBox.Show("Add successfully.");
                 }
             }
             catch (Exception ex)
@@ -57,25 +53,18 @@ namespace MyStoreWinApp
         }
         private void MemberDetails_Load(object sender, EventArgs e)
         {
-            if (!admin.Role.Equals("ADMIN"))
+            txtMemberId.Enabled = !InsertOrUpdate;
+            txtPassword.Enabled = !InsertOrUpdate;
+            txtEmail.Enabled = !InsertOrUpdate;
+            btnChangePassword.Enabled = InsertOrUpdate;
+            if (InsertOrUpdate == true)
             {
-                MessageBox.Show("Action is not accepted!");
-            }
-            else
-            {
-                txtMemberId.Enabled = !InsertOrUpdate;
-                txtPassword.Enabled = !InsertOrUpdate;
-                txtEmail.Enabled = !InsertOrUpdate;
-                btnChangePassword.Enabled = InsertOrUpdate;
-                if (InsertOrUpdate == true)
-                {
-                    txtMemberId.Text = MemberInfo.MemberID.ToString();
-                    txtEmail.Text = MemberInfo.Email.ToString();
-                    txtMemberName.Text = MemberInfo.MemberName.ToString();
-                    txtCountry.Text = MemberInfo.Country.ToString();
-                    txtPassword.Text = "******";
-                    txtCity.Text = MemberInfo.City.ToString();
-                }
+                txtMemberId.Text = MemberInfo.MemberID.ToString();
+                txtEmail.Text = MemberInfo.Email.ToString();
+                txtMemberName.Text = MemberInfo.MemberName.ToString();
+                txtCountry.Text = MemberInfo.Country.ToString();
+                txtPassword.Text = "******";
+                txtCity.Text = MemberInfo.City.ToString();
             }
         }
 

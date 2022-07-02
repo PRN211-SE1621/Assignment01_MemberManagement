@@ -46,8 +46,15 @@ namespace MyStoreWinApp
 
         private void frmMemberManagement_Load(object sender, EventArgs e)
         {
+            if(member.Role.Equals(Roles.USER))
+            {
+                btnLoad.Enabled = false;
+                btnNew.Enabled = false;
+                btnSearch.Enabled = false;
+                btnFilter.Enabled = false;
+                btnSort.Enabled = false;
+            }
             btnDelete.Enabled = false;
-            dgvMemberList.CellContentClick += dgvMemberList_CellContentClick;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -61,8 +68,7 @@ namespace MyStoreWinApp
             {
                 Text = "Add Member",
                 InsertOrUpdate = false,
-                MemberRepository = memberRepo,
-                admin = this.member
+                MemberRepository = memberRepo
             };
             if (memberDetails.ShowDialog() == DialogResult.OK)
             {
@@ -131,11 +137,6 @@ namespace MyStoreWinApp
             this.Close();
         }
 
-        private void cboCountry_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnFilter_Click(object sender, EventArgs e)
         {
             string country = txtCountryFilter.Text;
@@ -151,7 +152,6 @@ namespace MyStoreWinApp
                 Text = "Update Member",
                 InsertOrUpdate = true,
                 MemberRepository = memberRepo,
-                admin = this.member,
                 MemberInfo = GetMemberObject()
             };
             if (memberDetails.ShowDialog() == DialogResult.OK)
