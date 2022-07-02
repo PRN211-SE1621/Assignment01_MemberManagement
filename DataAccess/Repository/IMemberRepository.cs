@@ -14,7 +14,8 @@ namespace DataAccess.Repository
 
         public IEnumerable<MemberObject> GetAllMembers();
 
-        public List<MemberObject> SearchMemberByName(string name);
+        public IEnumerable<MemberObject> SearchMemberByName(string name);
+        public IEnumerable<MemberObject> SearchMemberByIdAndName(string id, string name);
 
         public List<MemberObject> SearchMemberById(string id);
 
@@ -25,9 +26,7 @@ namespace DataAccess.Repository
         public MemberObject CheckLogin(string email, string password);
 
         public bool ChangePassword(string id, string oldPassword, string newPassword);
-
-        public List<MemberObject> SearchMemberByIdAndName(string searchName, string searchId);
-
+        public IEnumerable<MemberObject> SortByMemberName(IEnumerable<MemberObject> members);
         public IEnumerable<MemberObject> GetMembersFilterByCountryAndCity(string country, string city);
     }
 }

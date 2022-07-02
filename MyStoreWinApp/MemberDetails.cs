@@ -1,16 +1,5 @@
 ﻿using BussinessObject;
 using DataAccess.Repository;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BussinessObject;
-using DataAccess.Repository;
 
 namespace MyStoreWinApp
 {
@@ -57,7 +46,14 @@ namespace MyStoreWinApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add a new member" : "Update a member");
+                if(ex.Message.Contains("input"))
+                {
+                    MessageBox.Show("The id must be a number", InsertOrUpdate == false ? "Add a new member" : "Update a member");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message, InsertOrUpdate == false ? "Add a new member" : "Update a member");
+                }
             }
         }
 

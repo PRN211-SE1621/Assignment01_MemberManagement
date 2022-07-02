@@ -159,12 +159,17 @@ namespace MyStoreWinApp
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            LoadMembersToGridView(memberRepo.SearchMemberByIdAndName(txtMemberIDSearch.Text, txtMemberNameSearch.Text));
         }
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-
+            IEnumerable<MemberObject> membersAfterSorted = memberRepo.SortByMemberName(GetListInGridView());
+            LoadMembersToGridView(membersAfterSorted);
+        }
+        private IEnumerable<MemberObject> GetListInGridView()
+        {
+            return (IEnumerable<MemberObject>)((BindingSource)dgvMemberList.DataSource).DataSource;
         }
     }
 }

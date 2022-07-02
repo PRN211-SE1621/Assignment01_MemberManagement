@@ -100,25 +100,24 @@ namespace DataAccess.Context
         {
             try
             {
-                MemberObject pro = GetMemberByID(member.MemberID);
-                if (pro == null)
+                if(GetMemberByID(member.MemberID) != null)
                 {
-                    string SQLInsert = "Insert Members values (@MemberID, @MemberName, @Email, @Password, @City, @Country, @Role)";
-                    var parameters = new List<SqlParameter>();
-                    parameters.Add(dataProvider.CreateParameter("@MemberID", 4, member.MemberID, DbType.Int32));
-                    parameters.Add(dataProvider.CreateParameter("@MemberName", 500, member.MemberName, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@Email", 100, member.Email, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@Password", 100, member.Password, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@City", 500, member.City, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@Country", 500, member.Country, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@Role", 100, member.Role, DbType.String));
-                    dataProvider.Insert(SQLInsert, CommandType.Text, parameters.ToArray());
+                    throw new Exception("Member is already exist");
                 }
-                else
+                if(GetMemberByEmail(member.Email) != null)
                 {
-                    throw new Exception("Member is already exist.");
+                    throw new Exception("Email is already exist");
                 }
-
+                string SQLInsert = "Insert Members values (@MemberID, @MemberName, @Email, @Password, @City, @Country, @Role)";
+                var parameters = new List<SqlParameter>();
+                parameters.Add(dataProvider.CreateParameter("@MemberID", 4, member.MemberID, DbType.Int32));
+                parameters.Add(dataProvider.CreateParameter("@MemberName", 500, member.MemberName, DbType.String));
+                parameters.Add(dataProvider.CreateParameter("@Email", 100, member.Email, DbType.String));
+                parameters.Add(dataProvider.CreateParameter("@Password", 100, member.Password, DbType.String));
+                parameters.Add(dataProvider.CreateParameter("@City", 500, member.City, DbType.String));
+                parameters.Add(dataProvider.CreateParameter("@Country", 500, member.Country, DbType.String));
+                parameters.Add(dataProvider.CreateParameter("@Role", 100, member.Role, DbType.String));
+                dataProvider.Insert(SQLInsert, CommandType.Text, parameters.ToArray());
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
             finally { CloseConnection(); }
@@ -245,5 +244,41 @@ namespace DataAccess.Context
             }
             return members;
         }
+
+        public MemberObject GetMemberByEmail(string email)
+        {
+            MemberObject member = null;
+            IDataReader dataReader = null;
+            string SQLSelect = "Select member_id, member_name, email, password, city, country, role from Members " +
+                "where email = @Email";
+            try
+            {
+                var param = dataProvider.CreateParameter("@Email", 100, email, DbType.String);
+                dataReader = dataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection, param);
+                if (dataReader.Read())
+                {
+                    member = new MemberObject()
+                    {
+                        MemberID = dataReader.GetInt32(0),
+                        MemberName = dataReader.GetString(1),
+                        Email = dataReader.GetString(2),
+                        Password = dataReader.GetString(3),
+                        City = dataReader.GetString(4),
+                        Country = dataReader.GetString(5),
+                        Role = dataReader.GetString(6)
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                dataReader.Close();
+                CloseConnection();
+            }
+            return member;
+        }    
     }
 }
