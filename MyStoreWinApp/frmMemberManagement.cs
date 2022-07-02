@@ -84,14 +84,12 @@ namespace MyStoreWinApp
                 txtEmail.DataBindings.Clear();
                 txtCity.DataBindings.Clear();
                 txtCountry.DataBindings.Clear();
-                txtPassword.DataBindings.Clear();
 
                 txtMemberId.DataBindings.Add("Text", bindingSource, "MemberId");
                 txtMemberName.DataBindings.Add("Text", bindingSource, "MemberName");
                 txtEmail.DataBindings.Add("Text", bindingSource, "Email");
                 txtCity.DataBindings.Add("Text", bindingSource, "City");
                 txtCountry.DataBindings.Add("Text", bindingSource, "Country");
-                txtPassword.DataBindings.Add("Text", bindingSource, "Password");
 
                 dgvMemberList.DataSource = null;
                 dgvMemberList.DataSource = bindingSource;
@@ -120,7 +118,6 @@ namespace MyStoreWinApp
             txtEmail.Text = "";
             txtCity.Text = "";
             txtCountry.Text = "";
-            txtPassword.Text = "******";
         }
 
         private void btnCLose_Click(object sender, EventArgs e)
@@ -132,7 +129,8 @@ namespace MyStoreWinApp
         {
             string country = txtCountryFilter.Text;
             string city = txtCityFilter.Text;
-            IEnumerable<MemberObject> members = memberRepo.GetMembersFilterByCountryAndCity(country, city);
+            IEnumerable<MemberObject> currentMembers = GetListInGridView() == null ? memberRepo.GetAllMembers() : GetListInGridView();
+            IEnumerable<MemberObject> members = memberRepo.GetMembersFilterByCountryAndCity(country, city, currentMembers);
             LoadMembersToGridView(members);
         }
 
@@ -166,11 +164,16 @@ namespace MyStoreWinApp
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-            IEnumerable<MemberObject> membersAfterSorted = memberRepo.SortByMemberName(GetListInGridView());
+            IEnumerable<MemberObject> currentMembers = GetListInGridView() == null ? memberRepo.GetAllMembers() : GetListInGridView();
+            IEnumerable<MemberObject> membersAfterSorted = memberRepo.SortByMemberName(currentMembers);
             LoadMembersToGridView(membersAfterSorted);
         }
         private IEnumerable<MemberObject> GetListInGridView()
         {
+            if(dgvMemberList.DataSource == null)
+            {
+                return null;
+            }    
             return (IEnumerable<MemberObject>)((BindingSource)dgvMemberList.DataSource).DataSource;
         }
     }

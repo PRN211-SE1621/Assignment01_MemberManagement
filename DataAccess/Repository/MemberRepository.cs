@@ -214,6 +214,10 @@ namespace DataAccess.Repository
         {
             return MemberDBContext.Instance.getAllMembersFilterByCountryAndCity(country, city);
         }
+        public IEnumerable<MemberObject> GetMembersFilterByCountryAndCity(string country, string city, IEnumerable<MemberObject> members)
+        {
+            return members.Where(member => (member.Country.Contains(country) && member.City.Contains(city))).ToList();
+        }
 
         public IEnumerable<MemberObject> SortByMemberName(IEnumerable<MemberObject> members)
         {

@@ -83,7 +83,7 @@ namespace MyStoreWinApp
             txtMemberId.Enabled = !InsertOrUpdate;
             txtPassword.Enabled = !InsertOrUpdate;
             txtEmail.Enabled = !InsertOrUpdate;
-            btnChangePassword.Enabled = InsertOrUpdate;
+            btnChangePassword.Enabled = InsertOrUpdate && !IsAdmin;
             if (InsertOrUpdate == true)
             {
                 txtMemberId.Text = MemberInfo.MemberID.ToString();

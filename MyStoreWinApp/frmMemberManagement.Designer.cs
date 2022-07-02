@@ -36,9 +36,7 @@
             this.txtMemberName = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtMemberId = new System.Windows.Forms.TextBox();
-            this.lbReleaseYear = new System.Windows.Forms.Label();
             this.lbPrice = new System.Windows.Forms.Label();
             this.lbManufacturer = new System.Windows.Forms.Label();
             this.lbCarName = new System.Windows.Forms.Label();
@@ -128,7 +126,7 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(797, 113);
+            this.txtCity.Location = new System.Drawing.Point(797, 67);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(365, 27);
             this.txtCity.TabIndex = 23;
@@ -140,29 +138,12 @@
             this.txtEmail.Size = new System.Drawing.Size(365, 27);
             this.txtEmail.TabIndex = 22;
             // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(797, 67);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.ReadOnly = true;
-            this.txtPassword.Size = new System.Drawing.Size(365, 27);
-            this.txtPassword.TabIndex = 21;
-            // 
             // txtMemberId
             // 
             this.txtMemberId.Location = new System.Drawing.Point(201, 17);
             this.txtMemberId.Name = "txtMemberId";
             this.txtMemberId.Size = new System.Drawing.Size(365, 27);
             this.txtMemberId.TabIndex = 20;
-            // 
-            // lbReleaseYear
-            // 
-            this.lbReleaseYear.AutoSize = true;
-            this.lbReleaseYear.Location = new System.Drawing.Point(711, 67);
-            this.lbReleaseYear.Name = "lbReleaseYear";
-            this.lbReleaseYear.Size = new System.Drawing.Size(70, 20);
-            this.lbReleaseYear.TabIndex = 19;
-            this.lbReleaseYear.Text = "Password";
             // 
             // lbPrice
             // 
@@ -176,7 +157,7 @@
             // lbManufacturer
             // 
             this.lbManufacturer.AutoSize = true;
-            this.lbManufacturer.Location = new System.Drawing.Point(711, 116);
+            this.lbManufacturer.Location = new System.Drawing.Point(711, 70);
             this.lbManufacturer.Name = "lbManufacturer";
             this.lbManufacturer.Size = new System.Drawing.Size(34, 20);
             this.lbManufacturer.TabIndex = 17;
@@ -366,9 +347,7 @@
             this.Controls.Add(this.txtMemberName);
             this.Controls.Add(this.txtCity);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtMemberId);
-            this.Controls.Add(this.lbReleaseYear);
             this.Controls.Add(this.lbPrice);
             this.Controls.Add(this.lbManufacturer);
             this.Controls.Add(this.lbCarName);
@@ -398,9 +377,7 @@
         private TextBox txtMemberName;
         private TextBox txtCity;
         private TextBox txtEmail;
-        private TextBox txtPassword;
         private TextBox txtMemberId;
-        private Label lbReleaseYear;
         private Label lbPrice;
         private Label lbManufacturer;
         private Label lbCarName;
