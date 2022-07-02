@@ -165,5 +165,15 @@ namespace MyStoreWinApp
         {
             if(loginForm != null) loginForm.Close();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
