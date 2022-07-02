@@ -156,6 +156,7 @@
             this.btnSave.TabIndex = 44;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -166,6 +167,7 @@
             this.btnCancel.TabIndex = 45;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnChangePassword
             // 
@@ -176,6 +178,7 @@
             this.btnChangePassword.TabIndex = 46;
             this.btnChangePassword.Text = "Change Password";
             this.btnChangePassword.UseVisualStyleBackColor = true;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // MemberDetails
             // 
@@ -200,6 +203,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MemberDetails";
             this.Text = "Member Details";
+            this.Load += new System.EventHandler(this.MemberDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

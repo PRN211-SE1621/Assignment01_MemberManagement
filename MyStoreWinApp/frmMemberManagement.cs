@@ -42,7 +42,17 @@ namespace MyStoreWinApp
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-
+            MemberDetails memberDetails = new MemberDetails
+            {
+                Text = "Add member",
+                InsertOrUpdate = false,
+                MemberRepository = memberRepo,
+            };
+            if (memberDetails.ShowDialog() == DialogResult.OK)
+            {
+                LoadMembersToGridView(memberRepo.GetAllMembers());
+                bindingSource.Position = bindingSource.Count - 1;
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -87,6 +97,28 @@ namespace MyStoreWinApp
                 MessageBox.Show(ex.Message);
             }
         }
+        private MemberObject GetMemberObject()
+        {
+            MemberObject member = null;
+            try
+            {
+                member = new MemberObject
+                {
+                    MemberID = int.Parse(txtMemberId.Text),
+                    MemberName = txtMemberName.Text,
+                    Email = txtEmail.Text,
+                    Country = txtCountry.Text,
+                    Password = txtPassword.Text,
+                    City = txtCity.Text
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Get Member");
+            }
+            return member;
+        }
+
 
         private void ClearText()
         {
@@ -116,9 +148,20 @@ namespace MyStoreWinApp
             LoadMembersToGridView(members);
         }
 
-        private void dgvMemberList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvMemberList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            MemberDetails memberDetails = new MemberDetails
+            {
+                Text = "Update member",
+                InsertOrUpdate = true,
+                MemberRepository = memberRepo,
+                Member = GetMemberObject()
+            };
+            if (memberDetails.ShowDialog() == DialogResult.OK)
+            {
+                LoadMembersToGridView(memberRepo.GetAllMembers());
+                bindingSource.Position = bindingSource.Count - 1;
+            }
         }
 
         private void frmMemberManagement_FormClosed(object sender, FormClosedEventArgs e)
