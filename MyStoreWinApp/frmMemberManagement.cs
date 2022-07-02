@@ -29,10 +29,25 @@ namespace MyStoreWinApp
             this.member = member;
             memberRepo = new MemberRepository();
         }
+        private MemberObject GetMemberObject()
+        {
+            MemberObject mem = null;
+            try
+            {
+                memberRepo = new MemberRepository();
+                mem = memberRepo.GetMemberById(txtMemberId.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Get Member");
+            }
+            return mem;
+        }
 
         private void frmMemberManagement_Load(object sender, EventArgs e)
         {
-
+            btnDelete.Enabled = false;
+            dgvMemberList.CellContentClick += dgvMemberList_CellContentClick;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -42,12 +57,25 @@ namespace MyStoreWinApp
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-
+            MemberDetails memberDetails = new MemberDetails
+            {
+                Text = "Add Member",
+                InsertOrUpdate = false,
+                MemberRepository = memberRepo,
+                admin = this.member
+            };
+            if (memberDetails.ShowDialog() == DialogResult.OK)
+            {
+                LoadMembersToGridView(memberRepo.GetAllMembers());
+                bindingSource.Position = bindingSource.Count - 1;
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
             LoadMembersToGridView(memberRepo.GetAllMembers());
+            txtCountryFilter.Text = "";
+            txtCityFilter.Text = "";
         }
         private void LoadMembersToGridView(IEnumerable<MemberObject> members)
         {
@@ -118,7 +146,19 @@ namespace MyStoreWinApp
 
         private void dgvMemberList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            MemberDetails memberDetails = new MemberDetails
+            {
+                Text = "Update Member",
+                InsertOrUpdate = true,
+                MemberRepository = memberRepo,
+                admin = this.member,
+                MemberInfo = GetMemberObject()
+            };
+            if (memberDetails.ShowDialog() == DialogResult.OK)
+            {
+                LoadMembersToGridView(memberRepo.GetAllMembers());
+                bindingSource.Position = bindingSource.Count - 1;
+            }
         }
 
         private void frmMemberManagement_FormClosed(object sender, FormClosedEventArgs e)
