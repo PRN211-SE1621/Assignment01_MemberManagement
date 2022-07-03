@@ -49,7 +49,16 @@ namespace MyStoreWinApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                var member = GetMemberObject();
+                memberRepo.DeleteMember(member.MemberID.ToString());
+                LoadMembersToGridView(memberRepo.GetAllMembers());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Delete a member");
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
