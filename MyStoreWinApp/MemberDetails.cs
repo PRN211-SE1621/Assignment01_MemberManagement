@@ -75,8 +75,7 @@ namespace MyStoreWinApp
                 Password = txtPassword.Text
             };
             FrmChangePassword changePassword = new FrmChangePassword(this, member);
-            this.Hide();
-            changePassword.ShowDialog();
+            changePassword.Show();
         }
         private void MemberDetails_Load(object sender, EventArgs e)
         {
